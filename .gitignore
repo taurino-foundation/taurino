@@ -1,0 +1,125 @@
+# =========================
+# Python
+# =========================
+
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+nosetests.xml
+.tox/
+.cache/
+
+# Build / packaging
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+develop-eggs/
+eggs/
+parts/
+sdist/
+.installed.cfg
+
+# Python environment / installation artifacts
+.Python
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Pyenv
+.python-version
+
+
+# =========================
+# Rust / Cargo
+# =========================
+
+target/
+
+
+# =========================
+# Maturin
+# =========================
+
+# Compiled native extensions inside Python package
+python/taurino/**/*.so
+python/taurino/**/*.pyd
+python/taurino/**/*.dll
+python/taurino/**/*.dylib
+
+
+# =========================
+# IDEs / Editors
+# =========================
+
+# PyCharm / IntelliJ
+.idea/
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-*
+
+# Rope
+.ropeproject/
+
+# Eclipse / PyDev
+.project
+.pydevproject
+
+
+# =========================
+# OS-generated files
+# =========================
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+
+# =========================
+# Logs
+# =========================
+
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+pip-selfcheck.json
+
+
+# =========================
+# Documentation
+# =========================
+
+docs/_build/
+
+
+# =========================
+# Translations
+# =========================
+
+*.mo
+*.pot
+
+
+# =========================
+# Misc
+# =========================
+
+.mr.developer.cfg

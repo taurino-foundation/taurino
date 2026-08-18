@@ -1,0 +1,66 @@
+[build-system]
+requires = ["maturin>=1.12,<2.0"]
+build-backend = "maturin"
+
+
+[project]
+name = "taurino"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+license-files = [
+    "LICENSE-MIT",
+    "LICENSE-APACHE-2.0",
+    "LICENSE.spdx",
+]
+authors = [
+    { name = "AriBermeki", email = "ari.bermeki.de@gmail.com" }
+]
+requires-python = ">=3.10"
+
+classifiers = [
+    "Development Status :: 1 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Rust",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "pydantic>=1.10,<3; python_version < '3.14'",
+    "pydantic>=2,<3; python_version >= '3.14'",
+    "taunicorn==0.1.4",
+    "msgpack",
+]
+
+
+[project.urls]
+Repository = "https://github.com/taurino-foundation/taurino"
+
+
+[project.optional-dependencies]
+test = [
+    "pytest>=9.1.1,<10",
+    "pytest-asyncio>=1.4.0,<2",
+]
+
+
+[tool.maturin]
+bindings = "pyo3"
+python-source = "python"
+module-name = "taurino.engine._taurino"
+
+
+
+#[project.scripts]
+#taurino = "taurino:main"
+
