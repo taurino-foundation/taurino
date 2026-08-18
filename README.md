@@ -6,6 +6,6 @@
   >
 </div>
 
-> **🚧 Currently Under Development 🚧** — We are actively building the core of Taurino.
+> **🚧 Currently Under Development 🚧** — We are actively building the core of Taurino .
 
 ---
