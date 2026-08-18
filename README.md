@@ -1,6 +1,6 @@
 <div align="center">
   <img
-    src="https://raw.githubusercontent.com/taurino-foundation/taurino/main/docs/images/banner.png"
+    src="https://raw.githubusercontent.com/taurino-foundation/taurino/blob/main/docs/images/banner.png"
     alt="Taurino"
     width="50%"
   >
