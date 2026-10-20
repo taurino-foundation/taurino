@@ -3726,9 +3726,16 @@ checksum = "adb6935a6f5c20170eeceb1a3835a49e12e19d792f6dd344ccc76a985ca5a6ca"
 name = "taurino"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "dpi",
+ "getrandom 0.4.3",
  "ipckit",
+ "log",
+ "parking_lot",
  "pyo3",
- "taurino-window",
+ "tao",
+ "taurino-native",
+ "wry",
 ]
 
 [[package]]
@@ -3736,35 +3743,17 @@ name = "taurino-macros"
 version = "0.1.0"
 
 [[package]]
-name = "taurino-tools"
+name = "taurino-native"
 version = "0.1.0"
-source = "git+https://github.com/taurino-foundation/taurino-tools#66433dc939842388744a88f58f8a16accc406932"
-dependencies = [
- "anyhow",
- "dpi",
- "getrandom 0.4.3",
- "gtk",
- "image",
- "log",
- "muda",
- "parking_lot",
- "serde",
- "tao",
- "tray-icon",
- "windows",
-]
-
-[[package]]
-name = "taurino-window"
-version = "0.1.0"
-source = "git+https://github.com/taurino-foundation/taurino-window#c89183ca83ccf49efe26f1754f527d5bd3d3e950"
 dependencies = [
  "anyhow",
  "block2",
  "dpi",
  "getrandom 0.4.3",
  "gtk",
+ "image",
  "log",
+ "muda",
  "objc2",
  "objc2-app-kit",
  "objc2-foundation",
@@ -3779,7 +3768,7 @@ dependencies = [
  "serialize-to-javascript",
  "softbuffer",
  "tao",
- "taurino-tools",
+ "tray-icon",
  "url",
  "uuid",
  "webkit2gtk",

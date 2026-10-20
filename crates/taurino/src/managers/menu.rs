@@ -1,12 +1,11 @@
-use std::{collections::HashMap, sync::Arc};
-
-use taurino_window::{
-    anyhow::Result,
-    parking_lot::Mutex,
-    taurino_tools::{Menu, MenuId, RawWindow, Theme, WindowMenu},
-};
-
 use crate::managers::Manager;
+use anyhow::Result;
+use parking_lot::Mutex;
+use std::{collections::HashMap, sync::Arc};
+use taurino_native::{
+    config::Theme,
+    menu::{Menu, MenuId, RawWindow, WindowMenu},
+};
 
 // -----------------------------------------------------------------------------
 // MenuManager
@@ -212,7 +211,7 @@ impl MenuManager {
 
             #[cfg(windows)]
             {
-                use taurino_window::taurino_tools::map_theme_to_muda;
+                use taurino_native::utils::map_theme_to_muda;
 
                 let muda_theme = map_theme_to_muda(theme);
 
@@ -270,7 +269,7 @@ impl MenuManager {
         manager: Arc<Mutex<Self>>,
     ) -> Box<dyn FnMut(*const std::ffi::c_void) -> bool + 'static> {
         Box::new(move |msg| {
-            use taurino_window::windows_api::Win32::UI::WindowsAndMessaging::{
+            use taurino_native::windows_api::Win32::UI::WindowsAndMessaging::{
                 HACCEL, MSG, TranslateAcceleratorW,
             };
 

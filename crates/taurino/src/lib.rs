@@ -9,17 +9,16 @@ use {
 };
 
 use ipckit::SharedMemory;
-pub use taurino_window::anyhow;
 #[cfg(windows)]
-use taurino_window::tao::platform::windows::EventLoopBuilderExtWindows;
-use taurino_window::{
+use tao::platform::windows::EventLoopBuilderExtWindows;
+use {
     anyhow::{Context, Result},
-    events::{EventLoop, EventLoopBuilder, EventLoopProxy},
     tao::{
         event::{Event, WindowEvent},
         event_loop::ControlFlow,
         window::WindowBuilder,
     },
+    taurino_native::events::{EventLoop, EventLoopBuilder, EventLoopProxy},
     wry::WebViewBuilder,
 };
 
@@ -93,7 +92,7 @@ impl Taurino {
         // Create the initial native window.
         let window = WindowBuilder::new()
             .with_title("Taurino")
-            .with_inner_size(taurino_window::dpi::LogicalSize::new(1000.0, 700.0))
+            .with_inner_size(dpi::LogicalSize::new(1000.0, 700.0))
             .build(&runner)?;
         let _webview = WebViewBuilder::new()
             .with_url("https://www.y-sic.com")

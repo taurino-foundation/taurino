@@ -7,7 +7,7 @@ use std::{
 };
 
 use pyo3::{Py, PyAny, Python};
-use taurino_window::events::{EventLoopMessage, EventLoopProxy};
+use taurino_native::events::{EventLoopMessage, EventLoopProxy};
 
 #[macro_export]
 macro_rules! unsafe_impl_sync_send {

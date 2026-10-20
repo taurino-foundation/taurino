@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use taurino_window::{anyhow::Result, parking_lot::Mutex};
+use {anyhow::Result, parking_lot::Mutex};
 
 use crate::managers::Manager;
 

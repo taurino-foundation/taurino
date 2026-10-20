@@ -4,7 +4,7 @@ pub mod shortcut;
 pub mod tray;
 pub mod window;
 
-use taurino_window::{
+use {
     anyhow::Result,
     parking_lot::{Mutex, MutexGuard},
 };
