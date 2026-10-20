@@ -217,7 +217,7 @@ class TestGuiProcessEntry:
             notify_ready()
 
         with patch(
-            "taurino.rust.runtime",
+            "taurino.core.runtime",
             side_effect=fake_runtime,
             create=True,
         ):
@@ -247,7 +247,7 @@ class TestGuiProcessEntry:
             notify_ready()
 
         with patch(
-            "taurino.rust.runtime",
+            "taurino.core.runtime",
             side_effect=fake_runtime,
             create=True,
         ):
@@ -265,7 +265,7 @@ class TestGuiProcessEntry:
 
         with (
             patch(
-                "taurino.rust.runtime",
+                "taurino.core.runtime",
                 side_effect=RuntimeError("Engine failed"),
                 create=True,
             ),
@@ -292,7 +292,7 @@ class TestGuiProcessEntry:
         status = MagicMock()
 
         with patch(
-            "taurino.rust.runtime",
+            "taurino.core.runtime",
             side_effect=KeyboardInterrupt,
             create=True,
         ):
