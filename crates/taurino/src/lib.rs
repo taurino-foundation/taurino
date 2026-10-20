@@ -56,13 +56,27 @@ impl Taurino {
 
         let manager = Manager::new(menu_manager)?;
 
-        Ok(Self { runner, manager, proxy })
+        Ok(Self {
+            runner,
+            manager,
+            proxy,
+        })
     }
 
-    pub fn run(self, shutdown_event: Py<PyAny>, notify_ready: Py<PyAny>, shared_memory_name: &str) -> Result<()> {
-        let Self { runner, manager, proxy } = self;
+    pub fn run(
+        self,
+        shutdown_event: Py<PyAny>,
+        notify_ready: Py<PyAny>,
+        shared_memory_name: &str,
+    ) -> Result<()> {
+        let Self {
+            runner,
+            manager,
+            proxy,
+        } = self;
         let watcher_running = Arc::new(AtomicBool::new(true));
-        let watcher = spawn_shutdown_watcher(shutdown_event, proxy.clone(), Arc::clone(&watcher_running));
+        let watcher =
+            spawn_shutdown_watcher(shutdown_event, proxy.clone(), Arc::clone(&watcher_running));
 
         // Notify Python only once the IPC client, window, and WebView exist.
         // This does NOT mean JavaScript has installed all application listeners.
@@ -73,14 +87,17 @@ impl Taurino {
         }
 
         // Open the region created by the Python parent.
-        let _shared_memory = SharedMemory::open(shared_memory_name).context("Failed to open Taurino shared memory")?;
+        let _shared_memory = SharedMemory::open(shared_memory_name)
+            .context("Failed to open Taurino shared memory")?;
 
         // Create the initial native window.
         let window = WindowBuilder::new()
             .with_title("Taurino")
             .with_inner_size(taurino_window::dpi::LogicalSize::new(1000.0, 700.0))
             .build(&runner)?;
-        let _webview = WebViewBuilder::new().with_url("https://www.y-sic.com").build(&window)?;
+        let _webview = WebViewBuilder::new()
+            .with_url("https://www.y-sic.com")
+            .build(&window)?;
         let window_id = window.id();
 
         // Start the native application event loop.

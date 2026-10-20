@@ -9,7 +9,9 @@ use taurino_window::{
     parking_lot::{Mutex, MutexGuard},
 };
 
-use crate::managers::{menu::MenuManager, shortcut::ShortcutManager, tray::TrayManager, window::WindowManager};
+use crate::managers::{
+    menu::MenuManager, shortcut::ShortcutManager, tray::TrayManager, window::WindowManager,
+};
 
 pub struct Manager {
     _menu: Arc<Mutex<MenuManager>>,
