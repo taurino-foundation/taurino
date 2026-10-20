@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Release PR and GitHub Release
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@v5
         with:
           # GitHub App/PAT is optional, but strongly recommended:
           # it allows CI to run for bot-created release PRs.
