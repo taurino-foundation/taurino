@@ -147,6 +147,7 @@ packaging = [
 [tool.maturin]
 manifest-path = "crates/taurino/Cargo.toml"
 bindings = "pyo3"
+python-source = "python"
 module-name = "taurino.core._taurino"
 strip = true
 
