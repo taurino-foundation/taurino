@@ -1,0 +1,15 @@
+[package]
+name = "taurino"
+version = "0.1.0"
+edition = "2024"
+
+
+[lib]
+name = "_taurino"
+crate-type = ["cdylib"]
+
+
+[dependencies]
+taurino-window= {version = "0.1.0", git="https://github.com/taurino-foundation/taurino-window"}
+ipckit = "0.1.12"
+pyo3.workspace = true

@@ -1,0 +1,45 @@
+# A trusted automation repairs Cargo.lock in release-please PRs.
+# Requires RELEASE_PLEASE_TOKEN (GitHub App token or fine-grained PAT)
+# for write access and reliable downstream CI triggering.
+name: Release Lockfile Sync
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  sync:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'release-please--')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Sync Cargo.lock
+        run: cargo update --workspace
+      - name: Commit lockfile (only when changed)
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        shell: bash
+        run: |
+          if git diff --quiet -- Cargo.lock; then
+            echo 'Cargo.lock is already up to date.'
+            exit 0
+          fi
+          if [[ -z "$GH_TOKEN" ]]; then
+            echo 'ERROR: Set RELEASE_PLEASE_TOKEN to commit the updated lockfile.' >&2
+            exit 1
+          fi
+          git config user.name 'taurino-release-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Cargo.lock
+          git commit -m 'chore(release): update Cargo.lock'
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" \
+            push origin "HEAD:refs/heads/$BRANCH"

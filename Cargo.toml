@@ -1,0 +1,65 @@
+[workspace.package]
+authors = ["Ari Bermeki"]
+homepage = "https://github.com/taurino-foundation/taurino"
+repository = "https://github.com/taurino-foundation/taurino"
+categories = ["gui", "web-programming"]
+license = "Apache-2.0 OR MIT"
+edition = "2024"
+rust-version = "1.90"
+
+
+
+
+[workspace]
+resolver = "3"
+members = [
+    "crates/taurino",
+    "crates/taurino-macros"
+]
+
+
+[workspace.dependencies]
+ipckit = "0.1.12"
+pyo3 = {version = "0.29.3", default-features = false, features = ["abi3-py39","anyhow","bytes","extension-module","generate-import-lib","macros"]}
+taurino = { version = "0.1.0", path = "./crates/taurino" }
+
+
+
+
+
+# Standard-Release-Profil: klein & optimiert
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+incremental = false
+opt-level = "z"
+strip = true
+
+# Dev-Profil-Anpassung für schnellere Build-Tools
+[profile.dev.package.miniz_oxide]
+opt-level = 3
+
+# Aggressiveres Profil für maximale Größenreduktion
+[profile.release-size-optimized]
+inherits = "release"
+opt-level = "z"
+codegen-units = 1
+lto = "fat"
+incremental = false
+panic = "abort"
+strip = "symbols"
+
+
+
+# [workspace.lints.rust]
+# unsafe_code = "warn"
+# missing_docs = "warn"
+
+[workspace.lints.clippy]
+# TODO: Update in next PR to keep changes small, see https://github.com/tauri-apps/tauri/pull/16029
+collapsible_if = "allow"
+
+redundant_clone = "warn"
+assigning_clones = "warn"
+or_fun_call = "warn"
