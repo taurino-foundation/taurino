@@ -15,7 +15,9 @@ Benutzerdefinierter Build
 taurino build main.py --backend nuitka --onefile --name MyApp --output-dir dist
 Die CLI soll das installierte Build-Backend verwenden, den Build-Prozess ausführen, Fehlercodes korrekt zurückgeben und deine vorhandenen Packaging-Konfigurationen berücksichtigen.
 
-"""
+
+
+"""  # noqa: E501
 
 from __future__ import annotations
 
