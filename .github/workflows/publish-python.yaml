@@ -85,7 +85,7 @@ jobs:
           maturin-version: v1.14.1
           manylinux: '2_28'
           args: --release --out dist --compatibility pypi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: wheels-${{ matrix.name }}
           path: dist/*.whl
@@ -108,7 +108,7 @@ jobs:
           python-version: '3.11'
       - name: Build sdist
         run: uv build --sdist --out-dir dist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sdist
           path: dist/*.tar.gz
