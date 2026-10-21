@@ -132,7 +132,7 @@ muda = { version = "0.20", default-features = false, features = [
   "serde",
   "gtk3",
 ] }
-tray-icon = { version = "0.25", default-features = false, features = [
+tray-icon = { version = "0.26", default-features = false, features = [
   "serde",
   "libappindicator",
 ]}
