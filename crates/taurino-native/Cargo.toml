@@ -1,0 +1,144 @@
+
+[package]
+name = "taurino-native"
+version = "0.1.0"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+categories.workspace = true
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+# =============================================================================
+# Core Dependencies
+# =============================================================================
+
+[dependencies]
+anyhow.workspace = true
+parking_lot.workspace = true
+getrandom.workspace = true
+log.workspace = true
+
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+serde_with.workspace = true
+serialize-to-javascript.workspace = true
+
+# Windowing and WebView
+dpi.workspace = true
+raw-window-handle = "0.6"
+tao.workspace = true
+wry.workspace = true
+
+# Utilities
+image = { version = "0.25.10", default-features = false, features = ["png", "ico"] }
+url.workspace = true
+uuid.workspace = true
+
+
+
+
+
+
+
+
+
+# =============================================================================
+# Windows Dependencies
+# =============================================================================
+
+[target.'cfg(target_os = "windows")'.dependencies]
+once_cell = "1.21.4"
+softbuffer = { version = "0.4.8", default-features = false }
+webview2-com = "0.39.1"
+
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Gdi",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_NetworkManagement_Ndis",
+    "Win32_Networking_WinSock",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_IO",
+    "Win32_System_JobObjects",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_System_WinRT",
+    "Win32_UI",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+# =============================================================================
+# macOS Dependencies
+# =============================================================================
+
+[target.'cfg(target_os = "macos")'.dependencies]
+block2 = "0.6.2"
+objc2 = "0.6.4"
+objc2-foundation = "0.3.2"
+security-framework = "3.7.0"
+x509-parser = "0.18.1"
+x-win = "5.8.0"
+
+objc2-app-kit = { version = "0.3.2", default-features = false, features = [
+    "std",
+    "block2",
+    "NSApplication",
+    "NSColor",
+    "NSGraphics",
+    "NSImage",
+    "NSResponder",
+    "NSScreen",
+    "NSView",
+    "NSWindow",
+] }
+
+objc2-web-kit = { version = "0.3.2", default-features = false, features = [
+    "std",
+    "block2",
+    "objc2-app-kit",
+    "WKContentWorld",
+    "WKFrameInfo",
+    "WKScriptMessage",
+    "WKScriptMessageHandlerWithReply",
+    "WKUserContentController",
+    "WKWebView",
+    "WKWebViewConfiguration",
+] }
+
+# =============================================================================
+# Linux / BSD Dependencies
+# =============================================================================
+
+[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "netbsd", target_os = "openbsd"))'.dependencies]
+gtk = { version = "0.18", features = ["v3_24"] }
+webkit2gtk = { version = "=2.0", features = ["v2_40"] }
+
+# =============================================================================
+# Desktop Dependencies
+# =============================================================================
+
+# desktop
+[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd", target_os = "windows", target_os = "macos"))'.dependencies]
+muda = { version = "0.20", default-features = false, features = [
+  "serde",
+  "gtk3",
+] }
+tray-icon = { version = "0.25", default-features = false, features = [
+  "serde",
+  "libappindicator",
+]}
+# =============================================================================
+# Workspace Lints
+# =============================================================================
+
+[lints]
+workspace = true

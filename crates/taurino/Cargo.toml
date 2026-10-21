@@ -1,0 +1,22 @@
+[package]
+name = "taurino"
+version = "0.1.0"
+edition = "2024"
+
+
+[lib]
+name = "_taurino"
+crate-type = ["cdylib"]
+
+
+[dependencies]
+taurino-native = { version = "0.1.0", path = "../../crates/taurino-native" }
+ipckit = "0.1.12"
+pyo3.workspace = true
+parking_lot.workspace = true
+tao.workspace = true
+wry.workspace = true
+anyhow.workspace = true
+getrandom.workspace = true
+dpi.workspace = true
+log.workspace = true
